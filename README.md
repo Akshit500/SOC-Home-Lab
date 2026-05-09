@@ -12,4 +12,19 @@ The lab is designed to strenghten practical cybersecurity skills in :
 * Network reconnaissance detection
 
   ##LAb Architecture
-  
+  Kali Linux (Attacker)
+  ↓
+  Windows 10 + Sysmon + Wazuh Agent
+  ↓
+  Ububtu Servers + Wazuh SIEM
+  ↓
+  Security Alerts & Monitoring Dashboard
+
+  ## Technologies used
+
+  * Wazuh SIEM
+  * Kali Linux
+  * Windows 10
+  * Ubuntu Server
+  * Sysmon
+  * Oracle VM Virtualbox 
