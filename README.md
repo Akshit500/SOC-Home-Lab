@@ -67,6 +67,44 @@ SOC-home-lab/
 |-incident-report/
 |-scripts/
 
+## Current Progress
+* Installed Oracle VM Virtual box
+* Downloaded ubuntu server ISO
+* Created Ubuntu Server VM
+* Installed Wazuh SIEM
+* Configured Windows 10 VM
+* Installed Sysmon
+* Connected Wazuh Agent
+* Simulated Attack
+* Created custom detection rules
 
+## Why This Project 
+This lab is designed to provide practical hands-on SOC analyst experience by simulating real-world cyber attack and monitoring them using SIEM technology 
+
+THe project focuses on :
+* Threat detection
+* Log Analysis
+* Security monitoring
+* Incident investigation
+* Attack simulation
+* Blue team operations
+
+## Future Improvements 
+* Integrate sigma detection rule
+* add malware traffic analysis using wireshark
+* Create automated alert scripts using python
+* Implement MITRE ATT&CK-based detection
+* Add threat hunting scenarios
+* Configure email alerting
+
+## Skills Being developed 
+* SIEM Administration
+* Linux system Administration
+* Windows Event montoring
+* Threat detection
+* Incident Response
+* Network security monitoring
+* Security Operations Center (SOC) Workflow
+  
 ## Author
 Akshit Rawat
