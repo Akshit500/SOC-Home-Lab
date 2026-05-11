@@ -1,7 +1,9 @@
 # SOC-Home-Lab
+
 A hands-on cybersecurity SOC (Security Operation Center) home lab project build using wazuh , kali linux , windows 10 ,sysmon and virtual box for threat detection ,log monitoring ,attack simulation and incident analysis .
 
-##Project Overview
+## Project Overview
+
 This project simulates a real world SOC environment where cyberattcks are generated ,monitored ,detected , and investigated using SIEM technology  and security monitoring tools .
 The lab is designed to strenghten practical cybersecurity skills in :
 *Security Monitoring 
@@ -11,7 +13,8 @@ The lab is designed to strenghten practical cybersecurity skills in :
 * windows event analysis
 * Network reconnaissance detection
 
-  ##LAb Architecture
+ ## Lab Architecture
+ 
   Kali Linux (Attacker)
   ↓
   Windows 10 + Sysmon + Wazuh Agent
@@ -20,7 +23,8 @@ The lab is designed to strenghten practical cybersecurity skills in :
   ↓
   Security Alerts & Monitoring Dashboard
 
-  ## Technologies used
+ ## Technologies used
+  
   * Wazuh SIEM
   * Kali Linux
   * Windows 10
@@ -31,7 +35,8 @@ The lab is designed to strenghten practical cybersecurity skills in :
   * Hydra
   * Wireshark
 
-##Project Objective
+## Project Objective
+
   * Build in functional SOC monitoring enviornment
   * Configure centralized log collection
   * Simulate cyber attacks saftely in a lab
@@ -40,6 +45,7 @@ The lab is designed to strenghten practical cybersecurity skills in :
   * Create incident reports and detection rules
 
 ## Planned Attack Simulation 
+
 * Brute force login attack
 * Nmap port scanning
 * Suspicious powershell execution
@@ -47,6 +53,7 @@ The lab is designed to strenghten practical cybersecurity skills in :
 * Failed login detectiion
 
 ##Planned Features 
+
 * Centralized log monitoring 
 * Customm Wazuh detection rules
 * Sysmon Event callection
@@ -68,6 +75,7 @@ SOC-home-lab/
 |-scripts/
 
 ## Current Progress
+
 * Installed Oracle VM Virtual box
 * Downloaded ubuntu server ISO
 * Created Ubuntu Server VM
@@ -79,6 +87,7 @@ SOC-home-lab/
 * Created custom detection rules
 
 ## Why This Project 
+
 This lab is designed to provide practical hands-on SOC analyst experience by simulating real-world cyber attack and monitoring them using SIEM technology 
 
 THe project focuses on :
@@ -90,6 +99,7 @@ THe project focuses on :
 * Blue team operations
 
 ## Future Improvements 
+
 * Integrate sigma detection rule
 * add malware traffic analysis using wireshark
 * Create automated alert scripts using python
@@ -98,6 +108,7 @@ THe project focuses on :
 * Configure email alerting
 
 ## Skills Being developed 
+
 * SIEM Administration
 * Linux system Administration
 * Windows Event montoring
