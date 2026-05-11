@@ -52,7 +52,7 @@ The lab is designed to strenghten practical cybersecurity skills in :
 * Malware simulation using EICAR
 * Failed login detectiion
 
-##Planned Features 
+## Planned Features 
 
 * Centralized log monitoring 
 * Customm Wazuh detection rules
