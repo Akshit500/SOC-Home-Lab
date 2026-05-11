@@ -21,10 +21,52 @@ The lab is designed to strenghten practical cybersecurity skills in :
   Security Alerts & Monitoring Dashboard
 
   ## Technologies used
-
   * Wazuh SIEM
   * Kali Linux
   * Windows 10
   * Ubuntu Server
   * Sysmon
-  * Oracle VM Virtualbox 
+  * Oracle VM Virtualbox
+  * Nmap
+  * Hydra
+  * Wireshark
+
+##Project Objective
+  * Build in functional SOC monitoring enviornment
+  * Configure centralized log collection
+  * Simulate cyber attacks saftely in a lab
+  * Detect suspicious activities and threats
+  * Analyze security events and alerts
+  * Create incident reports and detection rules
+
+## Planned Attack Simulation 
+* Brute force login attack
+* Nmap port scanning
+* Suspicious powershell execution
+* Malware simulation using EICAR
+* Failed login detectiion
+
+##Planned Features 
+* Centralized log monitoring 
+* Customm Wazuh detection rules
+* Sysmon Event callection
+* Threat detection dashboard
+* Incident investigation report
+* MITRE ATT&CK mapping
+* Python log analysis scripts
+
+## Repository Structure 
+
+SOC-home-lab/
+|
+|-architecture/
+|-screenshots/
+|-setup-guide/
+|-attack-simulation/
+|-detection-rules/
+|-incident-report/
+|-scripts/
+
+
+## Author
+Akshit Rawat
