@@ -116,6 +116,9 @@ THe project focuses on :
 * Incident Response
 * Network security monitoring
 * Security Operations Center (SOC) Workflow
-  
+
+## Challenges Faced
+Encountered compatibility issues with Ubuntu 26.04 during Wazuh installation. Resolved by migrating to Ubuntu 22.04 LTS, which is officially supported by Wazuh.
+
 ## Author
 Akshit Rawat
