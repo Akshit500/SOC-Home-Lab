@@ -16,14 +16,11 @@ The lab is designed to strenghten practical cybersecurity skills in :
  ## Lab Architecture
  
   Kali Linux (Attacker)
-  ↓
-  ---
+  ->
   Windows 10 + Sysmon + Wazuh Agent
-  ↓
-  ---
+  ->
   Ububtu Servers + Wazuh SIEM
-  ↓
-  ---
+  ->
   Security Alerts & Monitoring Dashboard
 
  ## Technologies used
