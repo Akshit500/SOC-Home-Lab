@@ -23,6 +23,21 @@ This project builds a functional SOC environment from scratch, where cyberattack
 
 ---
 
+## 📦 Prerequisites
+
+Before replicating this lab, make sure you have:
+
+| Requirement | Minimum | Recommended |
+|-------------|---------|-------------|
+| RAM | 8GB | 16GB |
+| Disk Space | 80GB | 120GB |
+| CPU Cores | 4 | 8 |
+| OS | Windows 10/11 | Windows 10/11 |
+| VirtualBox | 7.0+ | 7.0+ |
+| Internet | Required for downloads | — |
+
+---
+
 ## 🏗️ Lab Architecture
 
 ```
@@ -55,6 +70,21 @@ All machines run as virtual machines inside **Oracle VM VirtualBox** on an isola
 
 ---
 
+## 🔢 Tool Versions Used
+
+| Tool | Version |
+|------|---------|
+| Wazuh SIEM | 4.7.x |
+| Ubuntu Server | 22.04 LTS |
+| Windows 10 | 22H2 |
+| Sysmon | 15.x |
+| Oracle VirtualBox | 7.0.x |
+| Kali Linux | 2024.x |
+| Nmap | 7.94 |
+| Hydra | 9.5 |
+
+---
+
 ## ✅ What I Built
 
 - [x] Installed and configured Oracle VM VirtualBox
@@ -82,16 +112,66 @@ All machines run as virtual machines inside **Oracle VM VirtualBox** on an isola
 
 ---
 
+## 🎯 MITRE ATT&CK Mapping
+
+| Technique | ID | Tactic | Tool Used | Detected |
+|-----------|-----|--------|-----------|---------|
+| Brute Force | T1110 | Credential Access | Hydra | ✅ |
+| Network Service Scanning | T1046 | Discovery | Nmap | ✅ |
+| PowerShell Execution | T1059.001 | Execution | PowerShell | ✅ |
+| Malware — EICAR Test | T1204 | Execution | EICAR File | ✅ |
+
+> Mapped using the [MITRE ATT&CK Framework](https://attack.mitre.org)
+
+---
+
+## 📋 Custom Wazuh Detection Rules
+
+### Rule 1 — Detect Multiple Failed Logins
+```xml
+<rule id="100001" level="10">
+  <if_sid>5710</if_sid>
+  <same_source_ip />
+  <description>Brute force attack detected - Multiple failed logins</description>
+  <group>authentication_failures</group>
+</rule>
+```
+
+### Rule 2 — Detect Nmap Port Scan
+```xml
+<rule id="100002" level="8">
+  <if_group>syslog</if_group>
+  <match>nmap</match>
+  <description>Nmap port scan activity detected</description>
+  <group>recon</group>
+</rule>
+```
+
+### Rule 3 — Suspicious PowerShell Execution
+```xml
+<rule id="100003" level="9">
+  <if_group>sysmon</if_group>
+  <field name="win.eventdata.image">powershell.exe</field>
+  <description>Suspicious PowerShell execution detected</description>
+  <group>execution</group>
+</rule>
+```
+
+---
+
 ## 📁 Repository Structure
 
 ```
 SOC-Home-Lab/
 │
-├── screenshots/          # Lab screenshots and dashboard captures
-├── setup-guide/          # Step-by-step setup documentation
-├── attack-simulations/   # Attack commands and methods used
-├── detection-rules/      # Custom Wazuh rules created
-├── incident-reports/     # Sample incident investigation reports
+├── screenshots/              # Lab screenshots and dashboard captures
+├── setup-guide/              # Step-by-step setup documentation
+│   └── wazuh-setup.md
+├── attack-simulations/       # Attack commands and methods used
+│   └── brute-force-attack.md
+├── detection-rules/          # Custom Wazuh rules created
+├── incident-report/          # Incident investigation reports
+│   └── INC-001-brute-force.md
 └── README.md
 ```
 
@@ -105,18 +185,19 @@ SOC-Home-Lab/
 | 4624 | Successful login |
 | 4688 | New process created |
 | 4672 | Special privileges assigned |
+| 4740 | Account lockout triggered |
 | 1 (Sysmon) | Process creation with full command line |
 | 3 (Sysmon) | Network connection detected |
 
 ---
 
-## 🧱 Challenges & How I Solved Them
+## 💡 Lessons Learned
 
-**Problem:** Wazuh installation failed on Ubuntu 24.04 LTS.
-
-**Root cause:** Ubuntu 24.04 is not officially supported by Wazuh at this time.
-
-**Solution:** Migrated to Ubuntu 22.04 LTS (Wazuh's officially supported version). This taught me the importance of checking official documentation for version compatibility before deployment — a skill directly applicable to real SOC environments.
+- **Version compatibility matters** — Ubuntu 24.04 broke Wazuh installation. Always check official docs before deploying
+- **Sysmon is essential** — default Windows logging misses critical events. Sysmon provides process creation, network connections and file changes
+- **Custom rules reduce noise** — default Wazuh rules generate many alerts. Tuning rules helps focus on what actually matters
+- **Log volume grows fast** — even a small lab generates thousands of events per hour. Storage and retention planning is critical in real SOC environments
+- **Isolation is important** — always run attack simulations on isolated networks, never on production or shared networks
 
 ---
 
@@ -143,6 +224,27 @@ SOC-Home-Lab/
 
 ---
 
+## 🧱 Challenges & How I Solved Them
+
+**Problem:** Wazuh installation failed on Ubuntu 24.04 LTS.
+
+**Root cause:** Ubuntu 24.04 is not officially supported by Wazuh at this time.
+
+**Solution:** Migrated to Ubuntu 22.04 LTS (Wazuh's officially supported version). This taught me the importance of checking official documentation for version compatibility before deployment — a skill directly applicable to real SOC environments.
+
+---
+
+## 📚 References & Resources
+
+- [Wazuh Official Documentation](https://documentation.wazuh.com)
+- [Sysmon Config — SwiftOnSecurity](https://github.com/SwiftOnSecurity/sysmon-config)
+- [MITRE ATT&CK Framework](https://attack.mitre.org)
+- [Windows Security Event IDs](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia)
+- [TryHackMe SOC Level 1 Path](https://tryhackme.com/path/outline/soclevel1)
+- [Wazuh Rules Documentation](https://documentation.wazuh.com/current/user-manual/ruleset/rules.html)
+
+---
+
 ## 👤 Author
 
 **Akshit Rawat**
@@ -150,11 +252,9 @@ SOC-Home-Lab/
 - LinkedIn: *[www.linkedin.com/in/akshit-rawat-b01810279]*
 
 ---
-## ⚠️ Disclaimer
-This project was built entirely in an isolated virtual lab environment 
-using Oracle VM VirtualBox. All attack simulations were performed only 
-on virtual machines I own and control. No real systems, networks, or 
-individuals were targeted. This repository is for educational and 
-portfolio purposes only. Do not replicate these techniques on any 
-system without explicit written permission.
 
+## ⚠️ Disclaimer
+
+This project was built entirely in an isolated virtual lab environment using Oracle VM VirtualBox. All attack simulations were performed only on virtual machines I own and control. No real systems, networks, or individuals were targeted. This repository is for educational and portfolio purposes only. Do not replicate these techniques on any system without explicit written permission.
+
+---
