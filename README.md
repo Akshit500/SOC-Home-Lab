@@ -1,124 +1,153 @@
-# SOC-Home-Lab
+# 🛡️ SOC Home Lab — Wazuh SIEM | Threat Detection & Log Monitoring
 
-A hands-on cybersecurity SOC (Security Operation Center) home lab project build using wazuh , kali linux , windows 10 ,sysmon and virtual box for threat detection ,log monitoring ,attack simulation and incident analysis .
+![Wazuh](https://img.shields.io/badge/SIEM-Wazuh-blue?style=for-the-badge)
+![Kali](https://img.shields.io/badge/Attacker-Kali_Linux-red?style=for-the-badge)
+![Windows](https://img.shields.io/badge/Endpoint-Windows_10-0078D6?style=for-the-badge&logo=windows)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-VirtualBox-orange?style=for-the-badge)
 
-## Project Overview
+> A hands-on Security Operations Center (SOC) home lab simulating real-world threat detection, log monitoring, and attack simulation using open-source tools.
 
-This project simulates a real world SOC environment where cyberattcks are generated ,monitored ,detected , and investigated using SIEM technology  and security monitoring tools .
-The lab is designed to strenghten practical cybersecurity skills in :
-*Security Monitoring 
-*SIEM Managemnt 
-* log analysis
-* incident response
-* windows event analysis
-* Network reconnaissance detection
+---
 
- ## Lab Architecture
- 
-  Kali Linux (Attacker)
-  ->
-  Windows 10 + Sysmon + Wazuh Agent
-  ->
-  Ububtu Servers + Wazuh SIEM
-  ->
-  Security Alerts & Monitoring Dashboard
+## 📌 Project Overview
 
- ## Technologies used
-  
-  * Wazuh SIEM
-  * Kali Linux
-  * Windows 10
-  * Ubuntu Server
-  * Sysmon
-  * Oracle VM Virtualbox
-  * Nmap
-  * Hydra
-  * Wireshark
+This project builds a functional SOC environment from scratch, where cyberattacks are generated, monitored, detected, and investigated using SIEM technology. It replicates the core workflow of a real SOC analyst — from configuring log collection to detecting active threats on a dashboard.
 
-## Project Objective
+**Core skills practiced:**
+- Security monitoring & SIEM administration
+- Log analysis and Windows Event monitoring
+- Incident response and investigation
+- Network reconnaissance detection
+- Attack simulation (Blue Team perspective)
 
-  * Build in functional SOC monitoring enviornment
-  * Configure centralized log collection
-  * Simulate cyber attacks saftely in a lab
-  * Detect suspicious activities and threats
-  * Analyze security events and alerts
-  * Create incident reports and detection rules
+---
 
-## Planned Attack Simulation 
+## 🏗️ Lab Architecture
 
-* Brute force login attack
-* Nmap port scanning
-* Suspicious powershell execution
-* Malware simulation using EICAR
-* Failed login detectiion
+```
+┌─────────────────┐         ┌──────────────────────────┐         ┌─────────────────────────┐
+│   Kali Linux    │ ──────► │  Windows 10 + Sysmon     │ ──────► │  Ubuntu Server          │
+│   (Attacker)    │         │  + Wazuh Agent           │         │  + Wazuh SIEM           │
+│                 │         │  (Monitored Endpoint)    │         │  (Log Collection &      │
+│  Nmap, Hydra,   │         │                          │         │   Alerting Dashboard)   │
+│  Wireshark      │         │                          │         │                         │
+└─────────────────┘         └──────────────────────────┘         └─────────────────────────┘
+```
 
-## Planned Features 
+All machines run as virtual machines inside **Oracle VM VirtualBox** on an isolated internal network.
 
-* Centralized log monitoring 
-* Customm Wazuh detection rules
-* Sysmon Event callection
-* Threat detection dashboard
-* Incident investigation report
-* MITRE ATT&CK mapping
-* Python log analysis scripts
+---
 
-## Repository Structure 
+## 🛠️ Technologies Used
 
-SOC-home-lab/
-|
-|-architecture/
-|-screenshots/
-|-setup-guide/
-|-attack-simulation/
-|-detection-rules/
-|-incident-report/
-|-scripts/
+| Tool | Role |
+|------|------|
+| **Wazuh SIEM** | Central log collection, alerting, and security dashboard |
+| **Ubuntu Server 22.04** | Hosts the Wazuh manager |
+| **Windows 10** | Monitored endpoint with Wazuh agent installed |
+| **Sysmon** | Deep Windows event telemetry (process creation, network connections) |
+| **Kali Linux** | Attack simulation machine |
+| **Oracle VM VirtualBox** | Hypervisor — hosts all VMs |
+| **Nmap** | Port scanning and network reconnaissance |
+| **Hydra** | Brute force attack simulation |
+| **Wireshark** | Network traffic analysis |
 
-## Current Progress
+---
 
-* Installed Oracle VM Virtual box
-* Downloaded ubuntu server ISO
-* Created Ubuntu Server VM
-* Installed Wazuh SIEM
-* Configured Windows 10 VM
-* Installed Sysmon
-* Connected Wazuh Agent
-* Simulated Attack
-* Created custom detection rules
+## ✅ What I Built
 
-## Why This Project 
+- [x] Installed and configured Oracle VM VirtualBox
+- [x] Deployed Ubuntu Server 22.04 VM
+- [x] Installed and configured Wazuh SIEM on Ubuntu Server
+- [x] Set up Windows 10 VM as a monitored endpoint
+- [x] Installed Sysmon on Windows 10 for enhanced event logging
+- [x] Enrolled Windows 10 as a Wazuh agent (connected to Wazuh manager)
+- [x] Configured centralized log collection (Windows Event Logs + Sysmon)
+- [x] Simulated attacks from Kali Linux
+- [x] Detected and analyzed alerts on the Wazuh dashboard
+- [x] Created custom Wazuh detection rules
 
-This lab is designed to provide practical hands-on SOC analyst experience by simulating real-world cyber attack and monitoring them using SIEM technology 
+---
 
-THe project focuses on :
-* Threat detection
-* Log Analysis
-* Security monitoring
-* Incident investigation
-* Attack simulation
-* Blue team operations
+## ⚔️ Attack Simulations Performed
 
-## Future Improvements 
+| Attack | Tool Used | Detection Method |
+|--------|-----------|-----------------|
+| Brute force login | Hydra | Failed login alerts (Event ID 4625) |
+| Port scanning | Nmap | Network reconnaissance detection |
+| Suspicious PowerShell execution | Manual | Sysmon + Wazuh rule trigger |
+| Malware simulation | EICAR test file | Wazuh file integrity monitoring |
+| Failed login detection | Manual | Windows Security Event logs |
 
-* Integrate sigma detection rule
-* add malware traffic analysis using wireshark
-* Create automated alert scripts using python
-* Implement MITRE ATT&CK-based detection
-* Add threat hunting scenarios
-* Configure email alerting
+---
 
-## Skills Being developed 
+## 📁 Repository Structure
 
-* SIEM Administration
-* Linux system Administration
-* Windows Event montoring
-* Threat detection
-* Incident Response
-* Network security monitoring
-* Security Operations Center (SOC) Workflow
+```
+SOC-Home-Lab/
+│
+├── screenshots/          # Lab screenshots and dashboard captures
+├── setup-guide/          # Step-by-step setup documentation
+├── attack-simulations/   # Attack commands and methods used
+├── detection-rules/      # Custom Wazuh rules created
+├── incident-reports/     # Sample incident investigation reports
+└── README.md
+```
 
-## Challenges Faced
-Encountered compatibility issues with Ubuntu 26.04 during Wazuh installation. Resolved by migrating to Ubuntu 22.04 LTS, which is officially supported by Wazuh.
+---
 
-## Author
-Akshit Rawat
+## 🔑 Key Windows Event IDs Monitored
+
+| Event ID | Description |
+|----------|-------------|
+| 4625 | Failed login attempt |
+| 4624 | Successful login |
+| 4688 | New process created |
+| 4672 | Special privileges assigned |
+| 1 (Sysmon) | Process creation with full command line |
+| 3 (Sysmon) | Network connection detected |
+
+---
+
+## 🧱 Challenges & How I Solved Them
+
+**Problem:** Wazuh installation failed on Ubuntu 24.04 LTS.
+
+**Root cause:** Ubuntu 24.04 is not officially supported by Wazuh at this time.
+
+**Solution:** Migrated to Ubuntu 22.04 LTS (Wazuh's officially supported version). This taught me the importance of checking official documentation for version compatibility before deployment — a skill directly applicable to real SOC environments.
+
+---
+
+## 🚀 Future Improvements
+
+- [ ] Integrate Sigma detection rules
+- [ ] Add malware traffic analysis using Wireshark
+- [ ] Create automated alert scripts using Python
+- [ ] Implement MITRE ATT&CK framework mapping
+- [ ] Add threat hunting scenarios
+- [ ] Configure email alerting for high-severity events
+
+---
+
+## 📚 Skills Developed
+
+- SIEM deployment and administration (Wazuh)
+- Linux system administration (Ubuntu Server)
+- Windows endpoint monitoring and Sysmon configuration
+- Threat detection and alert triage
+- Incident response workflow
+- Network security monitoring
+- Attack simulation and blue team analysis
+
+---
+
+## 👤 Author
+
+**Akshit Rawat**
+- GitHub: [@Akshit500](https://github.com/Akshit500)
+- LinkedIn: *[www.linkedin.com/in/akshit-rawat-b01810279]*
+
+---
+
