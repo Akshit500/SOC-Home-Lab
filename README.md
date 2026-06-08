@@ -150,4 +150,11 @@ SOC-Home-Lab/
 - LinkedIn: *[www.linkedin.com/in/akshit-rawat-b01810279]*
 
 ---
+## ⚠️ Disclaimer
+This project was built entirely in an isolated virtual lab environment 
+using Oracle VM VirtualBox. All attack simulations were performed only 
+on virtual machines I own and control. No real systems, networks, or 
+individuals were targeted. This repository is for educational and 
+portfolio purposes only. Do not replicate these techniques on any 
+system without explicit written permission.
 
